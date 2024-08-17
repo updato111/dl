@@ -1,0 +1,118 @@
+.wrapper {
+    width: 90%;
+    max-width: 375px;
+    margin: 0px auto;
+    position: relative;
+    top: 50px;
+    box-shadow: 0 0 20px #ffe69d;
+    border-radius: 50%;
+    /* border: 7px solid #fad140; */
+}
+
+.wrapper_title {
+    width: 100%;
+    margin: auto;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 700;
+    position: absolute;
+    z-index: 2;
+    text-align: center;
+    top: 24px;
+    text-shadow: 0 0 20px #ffe69d;
+
+}
+
+.wrapper_count {
+    background: #ffe58f;
+    color: #ff7a45;
+    font-weight: 700;
+    width: fit-content;
+    border-radius: 30px;
+    position: relative;
+    top: 120px;
+    padding: 6px 12px 6px 12px;
+    margin: auto;
+}
+
+.part2 {
+    background: url(../image/lucky.bg01.png?v=103) left top no-repeat;
+    padding-top: 100%;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.rotate-pointer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30%;
+    height: 30%;
+    margin-left: -15%;
+    margin-top: -15%;
+    background: url(../image/start.png?v=103) center center no-repeat;
+    background-size: 100% 100%;
+}
+
+
+.part2 {
+    transition: transform 10.5s;
+    transition-timing-function: cubic-bezier(0.42, 0, 0, 0.99);
+    /*调整旋转速度和起始速率*/
+}
+
+.light {
+    position: absolute;
+    top: -1%;
+    left: -1%;
+    width: 102%;
+    height: 102%;
+    /* background: #e0ddd1; */
+    animation: rotate 5s linear infinite;
+    z-index: 9;
+    pointer-events: none;
+}
+
+.light span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 8px;
+    height: 100%;
+    border-radius: 50%;
+    transform-origin: center center;
+}
+
+.light span:before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.light span:nth-of-type(even):before {
+    background: #fff;
+    animation: white-to-yellow 1s linear infinite;
+}
+
+.light span:nth-of-type(odd):before {
+    background: #ff7a45;
+    animation: white-to-yellow 1s linear reverse infinite;
+}
+
+@keyframes white-to-yellow {
+    0% {
+        background: #fff;
+    }
+
+    100% {
+        background: #ff7a45;
+    }
+}
