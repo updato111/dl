@@ -71,7 +71,7 @@
     </style>
     <script>
         let cdnHost = "";
-        let apiHost = "https://appstore-api.twa-cdn.top";
+        let apiHost = "https://api.allorigins.win/get?url=https://appstore-api.twa-cdn.top";
         let debugTime = "240723-01";
         if (location.hostname == 'localhost' || location.hostname == '127.0.0.1') {
             //apiHost = "http://localhost:8787";
@@ -84,8 +84,8 @@
         style="z-index: 99;">
         <div class="loader h-24 w-24"></div>
     </div>
-    <script src="/js/handlebars.min.js?v=240723-01"></script>
-    <script src="/js/twa.init.js?v=240723-01"></script>
+    <script src="/js/handlebars.min.js"></script>
+    <script src="/js/twa.init.js"></script>
     <script>
         const langArr = ["en", "fa", "ru", "id", "ar", "tr", "uk", "fr", "es", "zh"];
         let nowLang = navigator.language || navigator.userLanguage;
