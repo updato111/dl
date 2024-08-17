@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta property="og:url" content="https://www.google.com">
+    <meta property="og:image" itemprop="image"
+        content="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="600">
+    <meta property="og:site_name" content="Google">
+    <meta property="og:title" content="Google">
+    <meta property="og:description" content="About Google">
+    <meta name="robots" content="noindex, follow">
+    <title>_</title>
+    <style>
+        .loading {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-bg {
+            background: #ffffff;
+            -webkit-background: #ffffff;
+        }
+
+        .loader {
+            margin: auto;
+        }
+
+        .loader:before {
+            content: '';
+            box-sizing: border-box;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            margin-top: -20px;
+            margin-left: -20px;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            border-top: 4px solid #3b82f6;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script>
+        let cdnHost = "";
+        let apiHost = "https://appstore-api.twa-cdn.top";
+        let debugTime = "240723-01";
+        if (location.hostname == 'localhost' || location.hostname == '127.0.0.1') {
+            //apiHost = "http://localhost:8787";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="fixed top-0 left-0 w-full h-full loading loading-bg flex items-center justify-center"
+        style="z-index: 99;">
+        <div class="loader h-24 w-24"></div>
+    </div>
+    <script src="/js/handlebars.min.js?v=240723-01"></script>
+    <script src="/js/twa.init.js?v=240723-01"></script>
+    <script>
+        const langArr = ["en", "fa", "ru", "id", "ar", "tr", "uk", "fr", "es", "zh"];
+        let nowLang = navigator.language || navigator.userLanguage;
+        nowLang = nowLang.split('-')[0];
+        if (!langArr.includes(nowLang)) {
+            nowLang = 'en';
+        }
+
+        const requestUri = window.location.pathname;
+        const fileName = requestUri.substring(requestUri.lastIndexOf('/') + 1);
+        const pathParts = requestUri.split('/').filter(part => part);
+        const firstDirectory = pathParts[0] || '';
+
+        const themesConfig = firstDirectory.split('-');
+        const themesName = themesConfig[0] || '';
+        const projectName = themesConfig[1] || '';
+
+        window.global_info = {
+            themes: themesName,
+            path: fileName,
+            project: projectName,
+            lang: nowLang,
+            timestamp: debugTime,
+            cdn_host: cdnHost,
+            api_host: apiHost,
+        };
+
+        initpage();
+    </script>
+</body>
+
+</html>
